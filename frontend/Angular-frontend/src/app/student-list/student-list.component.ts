@@ -17,16 +17,24 @@ export class StudentListComponent implements OnInit {
   //   });
   // }
   students: Student[]|undefined;
-
+  s:string|undefined;
+  deletedId:number|undefined;
   constructor(private studentService: StudentService) {
   }
   deleteStudent(studentId:  string){
-    this.studentService.delete(studentId);
+    this.studentService.delete(studentId).subscribe(data =>{
+        this.populateStudentTable();
+      });
+    
   }
-  ngOnInit() {
+  populateStudentTable(){
     this.studentService.findAll().subscribe(data => {
       this.students = data;
     });
+  }
+  ngOnInit() {
+   
+    this.populateStudentTable();
   }
 
 }

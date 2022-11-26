@@ -8,16 +8,17 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <!-- <th scope="col">Buttons</th> -->
+            <th scope="col">Buttons</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stu of students">
+          <tr *ngFor="let stu of students;  let i = index">
+            
             <!-- <a routerLink="deleteStudent"></a> -->
-            <td>{{ stu.id }}</td>
+            <td>{{ i+1 }}</td>
             <td>{{ stu.name }}</td>
             <td><a href="mailto:{{ stu.email }}">{{ stu.email }}</a></td>
-            <!-- <td><button type="button" (click)='deleteStudent(stu.id!)'>Delete</button></td> -->
+            <td><button type="button" (click)='deleteStudent(stu.id!)'>Delete</button></td>
           </tr>
         </tbody>
       </table>

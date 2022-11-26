@@ -19,12 +19,13 @@ export class StudentService {
   public save(student: Student){
     return this.http.post<Student[]>(this.studentUrl,student);
   }
-  delete(studentId: String):Observable<number>{
+  delete(studentId: string):Observable<string>{
     // let httpHeaders = new HttpHeaders().
     // set('Content-type','application/Json');
     // let options={
     //   Headers:httpHeaders
     // };
-    return this.http.delete<number>(this.studentUrl+'/'+studentId);
+    // console.log("delete");
+    return this.http.delete<string>(this.studentUrl+'/'+studentId);
   }
 }
