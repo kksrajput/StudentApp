@@ -8,7 +8,8 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Buttons</th>
+            <th scope="col">Edit button</th>
+            <th scope="col">Delete button</th>
           </tr>
         </thead>
         <tbody>
@@ -16,9 +17,11 @@
             
             <!-- <a routerLink="deleteStudent"></a> -->
             <td>{{ i+1 }}</td>
+            <!-- <td>{{ stu.id }}</td> -->
             <td>{{ stu.name }}</td>
             <td><a href="mailto:{{ stu.email }}">{{ stu.email }}</a></td>
-            <td><button type="button" (click)='deleteStudent(stu.id!)'>Delete</button></td>
+            <td><a class="btn btn-primary btn-primary" [routerLink] = "['/updatestudent',stu.id]" role="button">Edit</a></td>
+            <td><a class="btn btn-primary btn-warning" (click)='deleteStudent(stu.id!)'>Delete</a></td>
           </tr>
         </tbody>
       </table>

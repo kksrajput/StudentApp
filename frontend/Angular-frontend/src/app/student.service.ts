@@ -16,6 +16,10 @@ export class StudentService {
    
     return this.http.get<Student[]>(this.studentUrl);
   }
+  public findById(studentId:String):Observable<Student>{
+   
+    return this.http.get<Student>(this.studentUrl+'/'+studentId);
+  }
   public save(student: Student){
     return this.http.post<Student[]>(this.studentUrl,student);
   }
