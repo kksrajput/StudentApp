@@ -17,12 +17,22 @@ export class StudentListComponent implements OnInit {
   //   });
   // }
   students: Student[]|undefined;
-  s:string|undefined;
+  isDeleted: string|undefined;
+  // s:string|undefined;
   deletedId:number|undefined;
+  isUpdated: string|undefined;
   constructor(private studentService: StudentService) {
+    this.isUpdated = "false";
   }
   deleteStudent(studentId:  string){
     this.studentService.delete(studentId).subscribe(data =>{
+        // console.log(data.hasOwnProperty('deleted'));
+        this.isDeleted = data;
+        
+       
+        // console.log(data['deleted']);
+        // if(data['deleted'] == "true")
+        // this.isDeleted = "yes";
         this.populateStudentTable();
       });
     

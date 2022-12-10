@@ -7,6 +7,7 @@ import {  Student } from './student';
 })
 export class StudentService {
   private studentUrl: string;
+  public isUpdated:string|undefined;
   
   constructor(private http:HttpClient) {
     this.studentUrl = "http://localhost:8080/students";
@@ -17,7 +18,7 @@ export class StudentService {
     return this.http.get<Student[]>(this.studentUrl);
   }
   public findById(studentId:String):Observable<Student>{
-   
+    this.isUpdated = "true";
     return this.http.get<Student>(this.studentUrl+'/'+studentId);
   }
   public save(student: Student){
