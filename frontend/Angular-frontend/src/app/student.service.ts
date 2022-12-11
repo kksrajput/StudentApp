@@ -19,6 +19,7 @@ export class StudentService {
   }
   public findById(studentId:String):Observable<Student>{
     this.isUpdated = "true";
+    // return this.http.get<Student>(this.studentUrl+'Details?id='+studentId);
     return this.http.get<Student>(this.studentUrl+'/'+studentId);
   }
   public save(student: Student){
