@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.studentApp.repo.StudentRepository;
 import com.studentApp.entity.Student;
 
 @RestController
-//@RequestMapping(path="/api/",produces="application/json")
 @CrossOrigin(origins = "http://localhost:4200")
 public class StudentController {
 	
@@ -31,6 +31,7 @@ public class StudentController {
 		this.studRepo = studRepo;
 	}
 
+	
 	@GetMapping("/students")
 	public List<Student> getStudents() {
 		return (List<Student>)this.studRepo.findAll();
@@ -46,6 +47,11 @@ public class StudentController {
 	}
 	@GetMapping("/students/{id}")
 	public Optional<Student> getAStudent(@PathVariable(value = "id")Long id) {
+		return this.studRepo.findById(id);
+	}
+	
+	@GetMapping("/studentsDetails")
+	public Optional<Student> getOneStudent(@RequestParam Long id) {
 		return this.studRepo.findById(id);
 	}
 	
